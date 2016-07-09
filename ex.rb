@@ -66,3 +66,61 @@ puts rotatated_values
 # end
 
 # rotations(key) => [rot_a, rot_b, rot_c, rot_d]
+
+
+#takes four arrays, zips together, flattens to one array, and joins.
+                          #array_a.zip(array_b).zip(array_c).zip(array_d).flatten.join("")
+# array_a = (1..5).to_a
+# => [1, 2, 3, 4, 5]
+# array_b = (6..10).to_a
+# => [6, 7, 8, 9, 10]
+# array_c = (11..15).to_a
+# => [11, 12, 13, 14, 15]
+# array_d = (16..20).to_a
+# => [16, 17, 18, 19, 20]
+# array_a.zip(array_b).zip(array_c).zip(array_d)
+# => [[[[1, 6], 11], 16], [[[2, 7], 12], 17], [[[3, 8], 13], 18], [[[4, 9], 14], 19], [[[5, 10], 15], 20]]
+# array_a.zip(array_b).zip(array_c).zip(array_d).flatten
+# => [1, 6, 11, 16, 2, 7, 12, 17, 3, 8, 13, 18, 4, 9, 14, 19, 5, 10, 15, 20]
+# word = "rock".chars
+# => ["r", "o", "c", "k"]
+# r = ["r"]
+# => ["r"]
+# r
+# => ["r"]
+# [r.class
+# => Array
+# [o = ["o"]
+# => ["o"]
+# [c = ["c"]
+# => ["c"]
+# [k = ["k"]
+# => ["k"]
+# [r.zip(o).zip(c).zip(k)
+# => [[[["r", "o"], "c"], "k"]]
+# [r.zip(o).zip(c).zip(k).flatten
+# => ["r", "o", "c", "k"]
+# [r.zip(o).zip(c).zip(k).flatten.join("")
+# => "rock"
+
+# thing.map.with_index do |number, index|
+#    if index == 0
+#      a_array << number
+#    end
+#    if index == 1
+#      b_array << number
+#    end
+#    if index == 2
+#      c_array << number
+#    end
+#    if index == 3
+#      d_array << number
+#    end
+#  end
+#
+#  thing.each_slice(4) do |element|
+#    a_array << element[0]
+#    b_array << element[1]
+#    c_array << element[2]
+#    d_array << element[3]
+#    exit
