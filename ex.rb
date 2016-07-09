@@ -1,7 +1,7 @@
 require "pry"
 
 # supported_charecters = (' '..'z').to_a
-# numbers_supported =
+# rotated_charecters = supported_charecters.rotate
 
  letter_cypher = {"a"=>1, "b"=>2, "c"=>3, "d"=>4, "e"=>5, "f"=>6,
                   "g"=>7, "h"=>8, "i"=>9, "j"=>10, "k"=>11, "l"=>12,
@@ -44,6 +44,16 @@ rotatated_values = num_value_letters.map.with_index do |number, index|
 end
 
 puts rotatated_values
+
+# sets all four rotations
+# offset_a = offset[0].to_i + key[0..1].to_i
+# => 70
+# offset_b = offset[1].to_i + key[1..2].to_i
+# => 90
+# offset_c = offset[2].to_i + key[2..3].to_i
+# => 53
+# offset_d = offset[3].to_i + key[3..4].to_i
+# => 88
 
 # How to make it into a method eventually...
 # def rotations(key)
