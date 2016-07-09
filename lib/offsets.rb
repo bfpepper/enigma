@@ -7,6 +7,3 @@ class Offsets
   end
 
 end
-
-
-puts Offsets.new.generate_offset
