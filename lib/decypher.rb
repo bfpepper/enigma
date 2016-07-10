@@ -2,8 +2,8 @@ require "./lib/offsets"
 require './lib/key'
 require "pry"
 
-class Encipher
-  attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary
+class Decypher
+  attr_reader :key, :letters, :offset
 
   def initialize(offest=nil, key=nil)
     @offset = offset || Offsets.new.generate_offset
@@ -21,7 +21,7 @@ class Encipher
     spit_out_encrypted_output
   end
 
-  def split_letters(input)#
+  def split_letters(input)
     split_input = input.chars
     split_input.each_with_index do |letter, index|
       @letters[index % 4] << letter
@@ -31,7 +31,7 @@ class Encipher
   def create_rotate_dictionary
     @letters.each_with_index do |value, index|
       rotation_amount = calculate_rotation(index)
-      rotated_support_chars = rotate_support_chars(rotation_amount)
+      rotated_support_chars = rotate_support_chars(-(rotation_amount))
       @rotated_dictionary[index] = rotate_dictionary(rotated_support_chars)
     end
   end
@@ -48,9 +48,10 @@ class Encipher
     end
   end
 
-  def calculate_rotation(position)#
-    offset = @offset[position].to_i
-    key = @key[position..position+1].to_i
+  def calculate_rotation(position)
+    num_position = position.to_s.to_i
+    offset = @offset[num_position].to_i
+    key = @key[num_position..num_position+1].to_i
     offset + key
   end
 
