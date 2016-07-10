@@ -3,11 +3,11 @@ require './lib/key'
 require "pry"
 
 class Decypher
-  attr_reader :key, :letters, :offset
+  attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary
 
-  def initialize(offest=nil, key=nil)
-    @offset = offset || Offsets.new.generate_offset
-    @key = key || Key.new.generate_key
+  def initialize(key, date)
+    @offset = (date.to_i ** 2).to_s[-4..-1]
+    @key = key
     @supported_characters = (' '..'z').to_a
     @letters = [[],[],[],[]]
     @rotated_dictionary = [[],[],[],[]]

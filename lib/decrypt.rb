@@ -4,8 +4,10 @@ class Decrypt
 
   input_file = ARGV[0]
   output_file = ARGV[1]
+  key = ARGV[2]
+  date = ARGV[3]
 
-  decypher = Decypher.new
+  decypher = Decypher.new(key, date)
 
   input = File.read(input_file)
 
