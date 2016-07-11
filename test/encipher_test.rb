@@ -50,4 +50,10 @@ class EncipherTest < Minitest::Test
     assert_equal " oLDG*7GJvD" , encipher.riddle("Hello World")
   end
 
+  def test_the_key_is_random
+    results = []
+    5.times{ results << Encipher.new.key }
+    assert results.uniq.count > 1
+  end
+
 end
