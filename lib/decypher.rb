@@ -1,7 +1,7 @@
 class Decypher
   attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary, :rotations
 
-  def initialize(key, date, rotations = [])
+  def initialize(key = nil, date = nil, rotations = [])
     @offset = (date.to_i ** 2).to_s[-4..-1]
     @key = key
     @supported_characters = (' '..'z').to_a
