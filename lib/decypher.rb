@@ -3,19 +3,21 @@ require './lib/key'
 require "pry"
 
 class Decypher
-  attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary
+  attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary, :rotations
 
-  def initialize(key, date)
+  def initialize(key, date, rotations = [])
     @offset = (date.to_i ** 2).to_s[-4..-1]
     @key = key
     @supported_characters = (' '..'z').to_a
     @letters = [[],[],[],[]]
     @rotated_dictionary = [[],[],[],[]]
     @encrypted_letters = [[],[],[],[]]
+    @rotations = rotations
   end
 
   def riddle(input)
     split_letters(input)
+    calculate_rotation
     create_rotate_dictionary
     swap_letters_with_rotated_dictionary
     spit_out_encrypted_output
@@ -30,8 +32,10 @@ class Decypher
 
   def create_rotate_dictionary
     @letters.each_with_index do |value, index|
-      rotation_amount = calculate_rotation(index)
-      rotated_support_chars = rotate_support_chars(-(rotation_amount))
+      # rotation_amount = calculate_rotation(index)
+      thing = @rotations[index]
+      # binding.pry
+      rotated_support_chars = rotate_support_chars(-thing)
       @rotated_dictionary[index] = rotate_dictionary(rotated_support_chars)
     end
   end
@@ -48,11 +52,15 @@ class Decypher
     end
   end
 
-  def calculate_rotation(position)
-    num_position = position.to_s.to_i
-    offset = @offset[num_position].to_i
-    key = @key[num_position..num_position+1].to_i
-    offset + key
+  def calculate_rotation
+    # num_position = position.to_s.to_i
+    # @rotations = []
+    4.times do | index |
+      key = @key[index..index+1].to_i
+      offset = @offset[index].to_i
+      value = offset + key
+      @rotations[index] = offset + key
+    end 
   end
 
   def rotate_support_chars(rotation_amount)
