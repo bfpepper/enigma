@@ -10,9 +10,11 @@ class Crack
 
   input = File.read(input_file)
 
-  cracked_text = cracked.crack_the_thing(input)
+  cracked_text = cracked.crack_it(input)
   File.write(output_file, cracked_text)
+  
+  # key = Cracked.new.rotations
 
-  puts "Created '#{output_file}' with the key "need to figure out the key thign" and date #{date}"
+  # puts "Created '#{output_file}' with the key need to figure out the key thign and date #{date}"
 
 end
