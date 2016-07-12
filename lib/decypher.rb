@@ -1,7 +1,3 @@
-require "./lib/offsets"
-require './lib/key'
-require "pry"
-
 class Decypher
   attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary, :rotations
 
