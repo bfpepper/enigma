@@ -6,7 +6,6 @@ require "./lib/cracked"
 
 class CrackedTest < Minitest::Test
 
-+
 
 
 end

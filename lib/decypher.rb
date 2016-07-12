@@ -1,7 +1,7 @@
 class Decypher
   attr_reader :key, :letters, :offset, :encrypted_letters, :rotated_dictionary, :rotations
 
-  def initialize(key, date, rotations = [])
+  def initialize(key = nil, date = nil, rotations = [])
     @offset = (date.to_i ** 2).to_s[-4..-1]
     @key = key
     @supported_characters = (' '..'z').to_a
@@ -28,9 +28,7 @@ class Decypher
 
   def create_rotate_dictionary
     @letters.each_with_index do |value, index|
-      # rotation_amount = calculate_rotation(index)
       thing = @rotations[index]
-      # binding.pry
       rotated_support_chars = rotate_support_chars(-thing)
       @rotated_dictionary[index] = rotate_dictionary(rotated_support_chars)
     end
@@ -49,14 +47,11 @@ class Decypher
   end
 
   def calculate_rotation
-    # num_position = position.to_s.to_i
-    # @rotations = []
     4.times do | index |
       key = @key[index..index+1].to_i
       offset = @offset[index].to_i
-      value = offset + key
       @rotations[index] = offset + key
-    end 
+    end
   end
 
   def rotate_support_chars(rotation_amount)
