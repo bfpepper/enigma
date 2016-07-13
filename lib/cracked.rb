@@ -16,7 +16,7 @@ class Cracked
     decypher.split_letters(output)
     decypher.create_rotate_dictionary
     decypher.swap_letters_with_rotated_dictionary
-    decypher.spit_out_encrypted_output
+    decypher.spit_out_decrypted_output
   end
 
   def output_end
@@ -46,6 +46,7 @@ class Cracked
         rotation_number
       end
       those(index, rotations, rotation_number)
+      index += 1
     end
   end
 
@@ -61,7 +62,6 @@ class Cracked
     else
       rotations[3] = rotation_number
     end
-    index += 1
   end
 
 end

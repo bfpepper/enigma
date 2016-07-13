@@ -1,5 +1,6 @@
 require "./lib/offsets"
 require './lib/key'
+require 'digest'
 require "pry"
 
 class Encipher
@@ -18,7 +19,17 @@ class Encipher
     split_letters(input)
     create_rotate_dictionary
     swap_letters_with_rotated_dictionary
-    spit_out_encrypted_output
+    spit_out_encrypted_output + create_last_four_of_sha
+  end
+
+  def create_last_four_of_sha
+    sha = create_sha
+    sha[-4..-1].to_s
+  end
+
+  def create_sha
+    encryptd_text = spit_out_encrypted_output
+    Digest::SHA256.hexdigest(encryptd_text)
   end
 
   def split_letters(input)
