@@ -11,12 +11,12 @@ class Decypher
     @rotations = rotations
   end
 
-  def riddle(input)
+  def unriddle(input)
     split_letters(input)
     calculate_rotation
     create_rotate_dictionary
     swap_letters_with_rotated_dictionary
-    spit_out_encrypted_output
+    spit_out_decrypted_output
   end
 
   def split_letters(input)
@@ -34,7 +34,7 @@ class Decypher
     end
   end
 
-  def spit_out_encrypted_output
+  def spit_out_decrypted_output
       @encrypted_letters[0].zip(*@encrypted_letters[1..-1]).flatten.compact.join("")
   end
 

@@ -44,12 +44,12 @@ class DecryptTest < Minitest::Test
     decypher.calculate_rotation
     decypher.create_rotate_dictionary
     decypher.swap_letters_with_rotated_dictionary
-    assert_equal "'$2aN:xdQ+*" , decypher.spit_out_encrypted_output
+    assert_equal "'$2aN:xdQ+*" , decypher.spit_out_decrypted_output
   end
 
   def test_it_all_works
     decypher = Decypher.new("2656", "49545")
-    assert_equal "'$2aN:xdQ+*" , decypher.riddle("Hello World")
+    assert_equal "'$2aN:xdQ+*" , decypher.unriddle("Hello World")
   end
 
 

@@ -47,7 +47,7 @@ class EncipherTest < Minitest::Test
 
   def test_it_all_works
     encipher = Encipher.new("2656", "49545")
-    assert_equal " oLDG*7GJvD" , encipher.riddle("Hello World")
+    assert_equal " oLDG*7GJvDdd64" , encipher.riddle("Hello World")
   end
 
   def test_the_key_is_random
