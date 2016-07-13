@@ -26,4 +26,10 @@ class CrackedTest < Minitest::Test
     assert_equal "hing", cracked.output_marker
   end
 
+  def test_output_marker_index
+    cracked = Cracked.new("this thing")
+    cracked.output_marker
+    assert_equal 6, cracked.output_marker_index
+  end
+
 end

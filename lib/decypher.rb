@@ -28,8 +28,8 @@ class Decypher
 
   def create_rotate_dictionary
     @letters.each_with_index do |value, index|
-      thing = @rotations[index]
-      rotated_support_chars = rotate_support_chars(-thing)
+      rotate = @rotations[index]
+      rotated_support_chars = rotate_support_chars(-rotate)
       @rotated_dictionary[index] = rotate_dictionary(rotated_support_chars)
     end
   end
