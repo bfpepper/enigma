@@ -45,17 +45,23 @@ class Cracked
       else
         rotation_number
       end
-      if index % 4 == 0
-        rotations[0] = rotation_number
-      elsif index % 4 == 1
-        rotations[1] = rotation_number
-      elsif index % 4 == 2
-        rotations[2] = rotation_number
-      else
-        rotations[3] = rotation_number
-      end
-      index += 1
+      those(index, rotations, rotation_number)
     end
-
   end
+
+
+  def those(index, rotations, rotation_number)
+    if index % 4 == 0
+
+      rotations[0] = rotation_number
+    elsif index % 4 == 1
+      rotations[1] = rotation_number
+    elsif index % 4 == 2
+      rotations[2] = rotation_number
+    else
+      rotations[3] = rotation_number
+    end
+    index += 1
+  end
+
 end
