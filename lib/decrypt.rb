@@ -12,7 +12,6 @@ class Decrypt
   end
 
   def check_sha_authenticity(message, sha)
-    binding.pry
     new_sha = Digest::SHA256.hexdigest(message)
     last_four = new_sha[-4..-1]
     if last_four == sha
